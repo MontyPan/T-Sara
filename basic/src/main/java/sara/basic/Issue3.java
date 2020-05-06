@@ -6,7 +6,7 @@ public class Issue3 {
 		String result;
 		if (score >= 60) {
 			result = "及格";
-		} else if (score <= 59 && score > 39) {
+		} else if (score >= 40) {
 			result = "活當";
 		} else {
 			result = "死當";
