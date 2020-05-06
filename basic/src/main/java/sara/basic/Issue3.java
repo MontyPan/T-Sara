@@ -5,11 +5,11 @@ public class Issue3 {
 		int score = 59;
 		String result;
 		if (score >= 60) {
-			result = "¤Î®æ";
+			result = "åŠæ ¼";
 		} else if (score <= 59 && score > 39) {
-			result = "¬¡·í";
+			result = "æ´»ç•¶";
 		} else {
-			result = "¦º·í";
+			result = "æ­»ç•¶";
 		}
 		System.out.println(score + " => " + result);
 	}
