@@ -1,16 +1,16 @@
 <?xml version = "1.0" encoding = "utf-8"?>
-	<通訊錄>
-		<資訊>
-			<姓名>小明</姓名>
-			<生日>2016/2/29</生日>
-			<電話>0912-345678</電話>
-			<性別>男性</性別>
-		</資訊>
+<addressBook>
+	<info>
+		<name>小明</name>
+		<birth>2016/2/29</birth>
+		<phone>0912-345678</phone>
+		<sex>男性</sex>
+	</info>
 	<hr/>
-		<資訊>
-			<姓名>小美</姓名>
-			<生日>1997/4/1</生日>
-			<電話>55688</電話>
-			<性別>女性</性別>
-		</資訊>
-	</通訊錄>
+	<info>
+		<name>小美</name>
+		<birth>1997/4/1</birth>
+		<phone>55688</phone>
+		<sex>女性</sex>
+	</info>
+</addressBook>
