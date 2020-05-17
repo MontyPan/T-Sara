@@ -1,0 +1,16 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<addressBook>
+	<info>
+		<name>小明</name>
+		<birth>2016/2/29</birth>
+		<phone>0912-345678</phone>
+		<sex>男性</sex>
+	</info>
+	<hr/>
+	<info>
+		<name>小美</name>
+		<birth>1997/4/1</birth>
+		<phone>55688</phone>
+		<sex>女性</sex>
+	</info>
+</addressBook>
