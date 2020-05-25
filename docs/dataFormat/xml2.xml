@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<addressBook>
+	<infos>
+		<info name="小明" birth="2016/2/29" phone="0912-345678" sex="男性"/>
+		<info name="小美" birth="1997/4/1" phone="55688" sex="女性"/>
+	</infos>
+</addressBook>
