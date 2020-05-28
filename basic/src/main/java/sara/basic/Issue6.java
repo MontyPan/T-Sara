@@ -6,7 +6,7 @@ public class Issue6 {
 		int sinbay = 1;
 		int gaybay = 1;
 		String result1, result2;
-		while(t < 99) {
+		while(t < 99 && sinbay < 3 && gaybay < 3) {
 			if(Math.random() > 0.5) {
 				result1 = "陽"; 
 				sinbay++;
