@@ -25,7 +25,7 @@ public class Issue6 {
 					sinbay++;
 					System.out.println("聖筊");
 				} else {
-					sinbay++;
+					chobay++;
 				} 
 		t = sinbay + gaybay + chobay;
 		System.out.println("聖筊：" + sinbay +" "+ "陰筊：" + gaybay + " " + "沒結論：" + " " + chobay + " " + "擲筊次數：" + t); 
