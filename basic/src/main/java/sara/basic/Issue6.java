@@ -5,25 +5,30 @@ public class Issue6 {
 		int t = 0;
 		int sinbay = 0;
 		int gaybay = 0;
-		int noend = 0;
-		String result1, result2;
-		
-		while(noend < 100 && sinbay < 3 && gaybay < 3) {
+		int chobay = 0;
+		int bay1, bay2;
+			
+		while(sinbay < 3 && gaybay < 3 && chobay < 100) {
 			if(Math.random() > 0.5) {
-				result1 = "陽"; 
-				sinbay++;
-				System.out.println(sinbay + result1);
+				bay1 = 10; 
+				bay2 = 10;
+				System.out.println("陽");
 			}else {
-				result2 = "陰";
-				gaybay++;
-				System.out.println(gaybay + result2);
-				
-				if (sinbay < 2 && gaybay < 2) {
-					noend++;
-				}
+				bay1 = 20;
+				bay2 = 20;	
+				System.out.println("陰");
 			}
+				if(bay1 + bay2 >= 40) {
+					gaybay++;
+					System.out.println("陰筊");
+				} else if(bay1 + bay2 >= 30) {
+					sinbay++;
+					System.out.println("聖筊");
+				} else {
+					sinbay++;
+				} 
+		t = sinbay + gaybay + chobay;
+		System.out.println("聖筊：" + sinbay +" "+ "陰筊：" + gaybay + " " + "沒結論：" + " " + chobay + " " + "擲筊次數：" + t); 
 		}
-		t = sinbay + gaybay;
-		System.out.println("聖杯：" + sinbay +" "+ "無筊：" + gaybay + " " + "沒結論：" + " " + noend + " " + "擲筊次數：" + t); 
-		}
+	}
 }
