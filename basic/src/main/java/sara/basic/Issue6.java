@@ -16,7 +16,7 @@ public class Issue6 {
 				noResult++;
 				baySum++;
 				sinBay = 0;
-			}else if(bay1 != true && bay2 != true) {
+			}else if(!bay1 && !bay2) {
 				noResult++;
 				baySum++;
 				noBay = 0;
