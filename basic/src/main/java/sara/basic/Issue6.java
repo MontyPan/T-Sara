@@ -13,6 +13,8 @@ public class Issue6 {
 		//用於計算擲出聖筊的次數
 		int noBay = 0;
 		//用於計算擲出無筊的次數
+		int choBay = 0;
+		//用於計算擲出笑筊的次數
 		int noResult = 0;
 		//用於計算沒連續擲出三個聖筊或無筊的數量，最大值為 100
 		int baySum = 0;
@@ -25,7 +27,7 @@ public class Issue6 {
 			if(bay1 && bay2) {
 			//當兩個筊都是凸面時，就執行以下內容
 				noResult++;  //無結論次數 +1
-				noBaySum++;  //判斷無筊是否連續次數 +1
+				noBaySum++;  //判斷無筊是否連續次數 +
 				noBay++;     //無筊次數 +1
 				//baySum++;    //擲筊次數 +1
 				sinBaySum = 0;  //不是聖筊，所以歸零
@@ -33,6 +35,7 @@ public class Issue6 {
 			//當兩個筊都是平面，就執行以下內容
 				noResult++; //無結論次數 +1
 				//baySum++;   //擲筊次數 +1
+				choBay++;
 				noBaySum = 0;  //不是無筊，所以歸零
 				sinBaySum = 0; //不是聖筊，所以歸零
 			}else  {
@@ -54,7 +57,7 @@ public class Issue6 {
 		//又或是都沒有連續擲出無筊或聖杯，就執行以下內容
 			result = "沒結論";
 		}
-		baySum = sinBay + noBay + noResult;
+		baySum = sinBay + noBay + choBay;
 		System.out.println("擲筊結果：" + " " + result + " " + "==>" + " " + "擲筊次數：" + " " + baySum);
 	}
 } 
