@@ -21,31 +21,33 @@ public class Issue6 {
 		//用於計算總擲筊次數
 		String result;
 		//用於印出擲筊結果
-
+		
 		while(noResult < 100 && sinBaySum < 3 && noBaySum < 3) {
 		//當 noResult<100、sinBaySum<3、noBaySum<3，任一條件不符合時，就會停止迴圈
 			if(bay1 && bay2) {
 			//當兩個筊都是凸面時，就執行以下內容
+				System.out.println("沒杯哦");
 				noResult++;  //無結論次數 +1
-				noBaySum++;  //判斷無筊是否連續次數 +
+				noBaySum++;  //判斷無筊是否連續次數
 				noBay++;     //無筊次數 +1
-				//baySum++;    //擲筊次數 +1
 				sinBaySum = 0;  //不是聖筊，所以歸零
 			}else if(!bay1 && !bay2) {
 			//當兩個筊都是平面，就執行以下內容
+				System.out.println("笑杯哦");
 				noResult++; //無結論次數 +1
-				//baySum++;   //擲筊次數 +1
 				choBay++;
 				noBaySum = 0;  //不是無筊，所以歸零
 				sinBaySum = 0; //不是聖筊，所以歸零
 			}else  {
 			//當兩個筊為一凸一平，就執行以下內容
+				System.out.println("聖杯哦");
 				noResult++;   //無結論次數+1
 				sinBaySum++;  //判斷聖筊是否連續次數 +1
 				sinBay++;     //聖筊次數 +1
-				//baySum++;     //擲筊次數 +1
 				noBaySum = 0; //判斷無筊是否連續的次數歸零
 			}
+			bay1 = Math.random() > 0.5; //擲新的筊
+			bay2 = Math.random() > 0.5; //擲新的筊
 		}
 		if(noBaySum == 3) {
 		//如果連續擲出三次無筊，就執行以下內容
