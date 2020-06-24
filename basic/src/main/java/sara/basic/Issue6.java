@@ -7,14 +7,12 @@ public class Issue6 {
 		boolean bay2 = Math.random() > 0.5;
 		int sinBaySum = 0; //用於計算擲出聖筊是否連續三次
 		int noBaySum = 0;  //用於計算擲出無筊是否連續三次
-		int noResult = 0;  //用於計算沒連續擲出三個聖筊或無筊的數量，最大值為 100
 		int baySum = 0;    //用於計算總擲筊次數
 		String result;
 		
 		//當 noResult<100、sinBaySum<3、noBaySum<3，任一條件不符合時，就會停止迴圈
-		while(noResult < 100 && sinBaySum < 3 && noBaySum < 3) {
+		while(baySum < 100 && sinBaySum < 3 && noBaySum < 3) {
 			baySum++;
-			noResult++;
 			if(bay1 && bay2) {  //當兩個筊都是凸面時，就執行以下內容
 				noBaySum++;  //無筊連續次數 +1
 				sinBaySum = 0;  //不是聖筊，所以歸零
