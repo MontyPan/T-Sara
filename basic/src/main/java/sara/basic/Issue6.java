@@ -13,8 +13,7 @@ public class Issue6 {
 				noBaySum++;  //無筊連續次數 +1
 				sinBaySum = 0;  //不是聖筊，所以歸零
 			}else if(!bay1 && !bay2) {  //當兩個筊都是平面，就執行以下內容
-				noBaySum = 0;
-				sinBaySum = 0;
+				noBaySum = sinBaySum = 0; //不是聖筊和無筊，都歸零
 			}else {  //當兩個筊為一凸一平，就執行以下內容
 				sinBaySum++;  //聖筊連續次數 +1
 				noBaySum = 0; //不是無筊，所以歸零
