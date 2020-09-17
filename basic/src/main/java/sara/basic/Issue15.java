@@ -8,11 +8,11 @@ public class Issue15 {
 		int y = 0; // 項數計數器
 		/*印出；1, 3, 5, 7, 9
 		25*/
+		System.out.print(a1);
 		while (y < n-1) {
-			System.out.print(a1 + (y * d) + ",");
 			y++;
+			System.out.print("," + (a1 +(y * d)));
 		}
-		System.out.println(a1 + (y * d));
-		System.out.println((a1 + (a1 + (n-1) * d)) * n / 2);
+		System.out.println("\n" + (a1 + (a1 + (n-1) * d)) * n / 2);
 	}
 }
