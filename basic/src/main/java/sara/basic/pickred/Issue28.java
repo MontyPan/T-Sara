@@ -135,6 +135,10 @@ public class Issue28 {
 				if (hasPair) {
 					System.out.println("請輸入要打出手牌的第幾張牌");
 					pickedCard = scr.nextInt() - 1;
+					while (pickedCard >= players[i].length || pickedCard <= 0) {
+						System.out.println("請重新輸入要打出手牌的第幾張牌");
+						pickedCard = scr.nextInt() - 1;
+					}
 					System.out.println("請問您打出的" + players[i][pickedCard] + "要與海底的第幾張牌配對?");
 					int pickedShowed = scr.nextInt() - 1;
 					isMatch = checkPairAndPoint(players[i][pickedCard], showedPoker[pickedShowed], i);
@@ -146,11 +150,14 @@ public class Issue28 {
 						// 配對成功，翻一張牌比對海底
 						secondPair(i);
 					}
-
 				} else {
 					if (players[i].length > 0) {
 						System.out.println("手牌無法與海底配對，請選擇要丟第幾張牌到海底");
 						pickedCard = scr.nextInt() - 1;
+						while (pickedCard >= players[i].length || pickedCard <= 0) {
+							System.out.println("請重新輸入要打出手牌的第幾張牌");
+							pickedCard = scr.nextInt() - 1;
+						}
 						System.out.println("您選擇要丟至海底的牌為：" + players[i][pickedCard]);
 						moveCardToShowed(i, pickedCard);
 						System.out.println("您的手牌：" + Arrays.toString(players[i]));
