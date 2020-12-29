@@ -235,15 +235,14 @@ public class Issue28 {
 			addCardToShowed();
 			System.out.println("目前海底牌：" + Arrays.toString(showedPoker));
 		} else {
-			System.out.println("請輸入" + shuffledPoker[0] + "要與海底的第幾張牌配對?");
 			secondPickedCard = scr.nextInt() - 1;
-			while (secondPickedCard != (hasPairSecond - 1)) {
-				System.out.println("請重新輸入能配對的第幾張海底牌");
+			while (secondPickedCard != hasPairSecond) {
+				System.out.println("請輸入" + shuffledPoker[0] + "要與海底的第幾張牌配對?");
 				secondPickedCard = scr.nextInt() - 1;
 			}
-			checkPairAndPoint(shuffledPoker[0], showedPoker[pickedCard], player);
+			checkPairAndPoint(shuffledPoker[0], showedPoker[hasPairSecond], player);
 			shuffledPoker[0] = "0";
-			showedPoker[pickedCard] = "0";
+			showedPoker[hasPairSecond] = "0";
 			shuffledPoker = removeEmptyElement(shuffledPoker);
 			showedPoker = removeEmptyElement(showedPoker);
 		}
