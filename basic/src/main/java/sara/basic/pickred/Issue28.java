@@ -13,6 +13,7 @@ public class Issue28 {
 	static int[] score;
 	static int diffScore;
 	static boolean isMatch;
+	static boolean hasPair;
 	static Scanner scr = new Scanner(System.in);
 	static int pickedCard;
 
@@ -130,14 +131,36 @@ public class Issue28 {
 				isMatch = false;
 				System.out.println("玩家" + i + "\n您的手牌有：" + Arrays.toString(players[i]));
 				System.out.println("目前海底牌：" + Arrays.toString(showedPoker));
-				System.out.println("請問您是否有手牌可以出？ 有的話請輸入 1 ；沒有的話請輸入 0 ");
-				int hasPair = scr.nextInt();
-				if (hasPair == 1) {
+				hasPair = checkIfPlayerHasPair(i);
+				if (hasPair) {
 					System.out.println("請輸入要打出手牌的第幾張牌");
 					pickedCard = scr.nextInt() - 1;
+					while (pickedCard >= players[i].length || pickedCard < 0) {
+						System.out.println("請重新輸入要打出手牌的第幾張牌");
+						pickedCard = scr.nextInt() - 1;
+					}
 					System.out.println("請問您打出的" + players[i][pickedCard] + "要與海底的第幾張牌配對?");
 					int pickedShowed = scr.nextInt() - 1;
+					while (pickedShowed >= showedPoker.length || pickedShowed < 0) {
+						System.out.println("請重新輸入要選擇海底的第幾張牌");
+						pickedShowed = scr.nextInt() - 1;
+					}
 					isMatch = checkPairAndPoint(players[i][pickedCard], showedPoker[pickedShowed], i);
+					while (!isMatch) {
+						System.out.println("輸入錯誤，請重新輸入能成功配對的手牌");
+						pickedCard = scr.nextInt() - 1;
+						while (pickedCard >= players[i].length || pickedCard < 0) {
+							System.out.println("請重新輸入要打出手牌的第幾張牌");
+							pickedCard = scr.nextInt() - 1;
+						}
+						System.out.println("請問您打出的" + players[i][pickedCard] + "要與海底的第幾張牌配對?");
+						pickedShowed = scr.nextInt() - 1;
+						while (pickedShowed >= showedPoker.length || pickedShowed < 0) {
+							System.out.println("請重新輸入要選擇海底的第幾張牌");
+							pickedShowed = scr.nextInt() - 1;
+						}
+						isMatch = checkPairAndPoint(players[i][pickedCard], showedPoker[pickedShowed], i);
+					}
 					if (isMatch) {
 						players[i][pickedCard] = "0";
 						showedPoker[pickedShowed] = "0";
@@ -146,12 +169,14 @@ public class Issue28 {
 						// 配對成功，翻一張牌比對海底
 						secondPair(i);
 					}
-
 				} else {
 					if (players[i].length > 0) {
-						System.out.println("玩家" + i + "\n您的手牌有：" + Arrays.toString(players[i]));
-						System.out.println("請選擇要丟第幾張牌到海底");
+						System.out.println("手牌無法與海底配對，請選擇要丟第幾張牌到海底");
 						pickedCard = scr.nextInt() - 1;
+						while (pickedCard >= players[i].length || pickedCard < 0) {
+							System.out.println("請重新輸入要打出手牌的第幾張牌");
+							pickedCard = scr.nextInt() - 1;
+						}
 						System.out.println("您選擇要丟至海底的牌為：" + players[i][pickedCard]);
 						moveCardToShowed(i, pickedCard);
 						System.out.println("您的手牌：" + Arrays.toString(players[i]));
@@ -165,24 +190,61 @@ public class Issue28 {
 		}
 	}
 
+	public static int checkIfOneCardHasPair(int player, String oneShuffledCard) {
+		for (int i = 0; i < showedPoker.length; i++) {
+			int numberCardOne = Integer.parseInt(oneShuffledCard.substring(1).trim());
+			int numberCardTwo = Integer.parseInt(showedPoker[i].substring(1).trim());
+
+			if ((numberCardOne + numberCardTwo) == 10) {
+				return i;
+			} else if (numberCardOne > 9 && numberCardTwo > 9) {
+				if (numberCardOne == numberCardTwo) {
+					return i;
+				}
+			}
+		}
+		return 100;
+	}
+
+	public static boolean checkIfPlayerHasPair(int player) {
+		for (int i = 0; i < players[player].length; i++) {
+			for (int i2 = 0; i2 < showedPoker.length; i2++) {
+				int numberCardOne = Integer.parseInt(players[player][i].substring(1).trim());
+				int numberCardTwo = Integer.parseInt(showedPoker[i2].substring(1).trim());
+
+				if ((numberCardOne + numberCardTwo) == 10) {
+					return true;
+				} else if (numberCardOne > 9 && numberCardTwo > 9) {
+					if (numberCardOne == numberCardTwo) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
+
 	public static void secondPair(int player) {
+		int secondPickedCard;
 		System.out.println("請抽一張牌與海底牌比對");
 		System.out.println("您抽到的牌為：" + shuffledPoker[0]);
 		System.out.println("目前海底牌：" + Arrays.toString(showedPoker));
-		System.out.println("請問您抽到的" + shuffledPoker[0] + "能否與海底的牌配對？ 有的話請輸入 1 ；沒有的話請輸入 0 ");
-		int hasPairSecond = scr.nextInt();
-		if (hasPairSecond == 1) {
-			System.out.println("請輸入要與海底的第幾張牌配對?");
-			pickedCard = scr.nextInt() - 1;
-			checkPairAndPoint(shuffledPoker[0], showedPoker[pickedCard], player);
-			shuffledPoker[0] = "0";
-			showedPoker[pickedCard] = "0";
-			shuffledPoker = removeEmptyElement(shuffledPoker);
-			showedPoker = removeEmptyElement(showedPoker);
-		} else {
-			System.out.println("請將抽到的牌放入海底");
+		int hasPairSecond = checkIfOneCardHasPair(player, shuffledPoker[0]);
+		if (hasPairSecond == 100) {
+			System.out.println("抽到的牌無法與海底湊牌，將抽到的牌放入海底");
 			addCardToShowed();
 			System.out.println("目前海底牌：" + Arrays.toString(showedPoker));
+		} else {
+			secondPickedCard = scr.nextInt() - 1;
+			while (secondPickedCard != hasPairSecond) {
+				System.out.println("請輸入" + shuffledPoker[0] + "要與海底的第幾張牌配對?");
+				secondPickedCard = scr.nextInt() - 1;
+			}
+			checkPairAndPoint(shuffledPoker[0], showedPoker[hasPairSecond], player);
+			shuffledPoker[0] = "0";
+			showedPoker[hasPairSecond] = "0";
+			shuffledPoker = removeEmptyElement(shuffledPoker);
+			showedPoker = removeEmptyElement(showedPoker);
 		}
 		System.out.println("蓋牌牌數：" + shuffledPoker.length);
 	}
@@ -304,7 +366,7 @@ public class Issue28 {
 		String suitsFromShowed = countCardTwo.substring(0, 1);
 
 		if ((scorePlayerCard + scoreShowedCard) == 10) {
-// 判斷幾分
+			// 判斷幾分
 			if (suitsFromPlayer.equals("♥") || suitsFromPlayer.equals("♦")) {
 				if (scorePlayerCard == 1) {
 					score[player] += 20;
