@@ -24,17 +24,16 @@ public class SaraStack {
 	public String pop() {
 		if (array.length <= 0) {
 			return "It's empty 此罐已空";
-		} else {
-			String last = array[top];
-			String[] newArr = new String[array.length - 1];
-			// newArr 複製 array.length-1 的值
-			copyArrayData(newArr, array, newArr.length);
-			// array 複製 newArr
-			array = new String[newArr.length];
-			copyArrayData(array, newArr, newArr.length);
-			top = array.length - 1;
-			return last;
 		}
+		String last = array[top];
+		String[] newArr = new String[array.length - 1];
+		// newArr 複製 array.length-1 的值
+		copyArrayData(newArr, array, newArr.length);
+		// array 複製 newArr
+		array = new String[newArr.length];
+		copyArrayData(array, newArr, newArr.length);
+		top = array.length - 1;
+		return last;
 	}
 
 	public String peek() {
