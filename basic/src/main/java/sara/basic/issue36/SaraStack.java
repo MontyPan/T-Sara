@@ -7,13 +7,19 @@ public class SaraStack {
 	public SaraStack() {
 		array = new String[0];
 	}
-
+	
+	/**
+	 * @param value
+	 */
 	public void push(String value) {
 		String[] newArr = new String[array.length + 1];
 		copyArrayData(newArr, array, array.length, value);
 		top = array.length - 1;
 	}
 
+	/**
+	 * @return
+	 */
 	public String pop() {
 		if (array.length <= 0) {
 			return "It's empty 此罐已空";
@@ -25,6 +31,9 @@ public class SaraStack {
 		return last;
 	}
 
+	/**
+	 * @return
+	 */
 	public String peek() {
 		if (array.length <= 0) {
 			return "It's empty 此罐已空";
@@ -33,6 +42,12 @@ public class SaraStack {
 		}
 	}
 
+	/**
+	 * @param tempArray
+	 * @param oldArray
+	 * @param arrayLength
+	 * @param value
+	 */
 	public void copyArrayData(String[] tempArray, String[] oldArray, int arrayLength, String value) {
 		// tempArray 複製 oldArray 的值
 		for (int i = 0; i < arrayLength; i++) {
