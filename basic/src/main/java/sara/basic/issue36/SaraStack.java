@@ -9,15 +9,8 @@ public class SaraStack {
 	}
 
 	public void push(String value) {
-		// array 只儲存舊的
 		String[] newArr = new String[array.length + 1];
-		// newArr 複製 array 的值
-		copyArrayData(newArr, array, array.length);
-		// newArr 再加一個新的
-		newArr[newArr.length - 1] = value;
-		// array 複製 newArr
-		array = new String[newArr.length];
-		copyArrayData(array, newArr, newArr.length);
+		copyArrayData(newArr, array, array.length, value);
 		top = array.length - 1;
 	}
 
@@ -27,11 +20,7 @@ public class SaraStack {
 		}
 		String last = array[top];
 		String[] newArr = new String[array.length - 1];
-		// newArr 複製 array.length-1 的值
-		copyArrayData(newArr, array, newArr.length);
-		// array 複製 newArr
-		array = new String[newArr.length];
-		copyArrayData(array, newArr, newArr.length);
+		copyArrayData(newArr, array, newArr.length, "");
 		top = array.length - 1;
 		return last;
 	}
@@ -44,10 +33,18 @@ public class SaraStack {
 		}
 	}
 
-	public void copyArrayData(String[] arrayOne, String[] arrayTwo, int arrayLength) {
-		// arrayOne 複製 newArray 的值
+	public void copyArrayData(String[] tempArray, String[] oldArray, int arrayLength, String value) {
+		// tempArray 複製 oldArray 的值
 		for (int i = 0; i < arrayLength; i++) {
-			arrayOne[i] = arrayTwo[i];
+			tempArray[i] = oldArray[i];
+		}
+		if (!value.equals("")) {
+			tempArray[tempArray.length - 1] = value;
+		}
+		// array 複製 tempArray 的值
+		array = new String[tempArray.length];
+		for (int i = 0; i < tempArray.length; i++) {
+			array[i] = tempArray[i];
 		}
 	}
 }
