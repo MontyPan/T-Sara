@@ -9,12 +9,9 @@ public class SaraStack {
 	}
 
 	public void push(String value) {
-		if (array.length > 0) {
-			top = array.length - 1;
-		}
 		// array 只儲存舊的
 		String[] newArr = new String[array.length + 1];
-		// newArr 複製 Array 的值
+		// newArr 複製 array 的值
 		for (int i = 0; i < array.length; i++) {
 			newArr[i] = array[i];
 		}
@@ -32,7 +29,7 @@ public class SaraStack {
 		if (array.length > 0) {
 			String last = array[top];
 			String[] newArr = new String[array.length - 1];
-			// newArr 複製 Array.length-1 的值
+			// newArr 複製 array.length-1 的值
 			for (int i = 0; i < newArr.length; i++) {
 				newArr[i] = array[i];
 			}
@@ -44,13 +41,13 @@ public class SaraStack {
 			top = array.length - 1;
 			return last;
 		}
-		return "It's empty 此罐以空";
+		return "It's empty 此罐已空";
 	}
 
 	public String peek() {
 		if (array.length > 0) {
 			return array[top];
 		}
-		return "It's empty 此罐以空";
+		return "It's empty 此罐已空";
 	}
 }
