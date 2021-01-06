@@ -15,7 +15,7 @@ public class Main {
         System.out.println(stack.pop());    //印出「不知是綠鯉魚比紅鯉魚的驢紅」
         stack.push("還是紅鯉魚比綠鯉魚的驢綠");
         System.out.println(stack.pop());    //印出「還是紅鯉魚比綠鯉魚的驢綠」
-        System.out.println(stack.peek());   //印出「紅鯉魚家有頭小綠驢叫李屢屢」
+        System.out.println(stack.pop());    //印出「紅鯉魚家有頭小綠驢叫李屢屢」
+        System.out.println(stack.pop());    //印出「It's empty 此罐以空」
 	}
-
 }

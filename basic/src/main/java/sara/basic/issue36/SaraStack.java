@@ -1,9 +1,5 @@
 package sara.basic.issue36;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class SaraStack {
 	private String[] array;
 	private int top;
@@ -13,28 +9,48 @@ public class SaraStack {
 	}
 
 	public void push(String value) {
-		List<String> tempList = new ArrayList<String>(Arrays.asList(array));
-		tempList.add(value);
-		array = tempList.toArray(new String[tempList.size()]);
+		if (array.length > 0) {
+			top = array.length - 1;
+		}
+		// array 只儲存舊的
+		String[] newArr = new String[array.length + 1];
+		// newArr 複製 Array 的值
+		for (int i = 0; i < array.length; i++) {
+			newArr[i] = array[i];
+		}
+		// newArr 再加一個新的
+		newArr[newArr.length - 1] = value;
+		// array 複製 newArr
+		array = new String[newArr.length];
+		for (int i = 0; i < newArr.length; i++) {
+			array[i] = newArr[i];
+		}
 		top = array.length - 1;
 	}
 
 	public String pop() {
 		if (array.length > 0) {
 			String last = array[top];
-			List<String> tempList = new ArrayList<String>(Arrays.asList(array));
-			tempList.remove(array[top]);
-			array = tempList.toArray(new String[tempList.size()]);
+			String[] newArr = new String[array.length - 1];
+			// newArr 複製 Array.length-1 的值
+			for (int i = 0; i < newArr.length; i++) {
+				newArr[i] = array[i];
+			}
+			// array 複製 newArr
+			array = new String[newArr.length];
+			for (int i = 0; i < newArr.length; i++) {
+				array[i] = newArr[i];
+			}
 			top = array.length - 1;
 			return last;
 		}
-		return "It's empty";
+		return "It's empty 此罐以空";
 	}
 
 	public String peek() {
 		if (array.length > 0) {
 			return array[top];
 		}
-		return "It's empty";
+		return "It's empty 此罐以空";
 	}
 }
