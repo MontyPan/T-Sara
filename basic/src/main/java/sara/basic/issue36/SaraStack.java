@@ -9,7 +9,7 @@ public class SaraStack {
 	}
 
 	/**
-	 * @param value
+	 * @param value 使用者輸入的字串
 	 */
 	public void push(String value) {
 		boolean noPlace = true;
@@ -29,7 +29,7 @@ public class SaraStack {
 	}
 
 	/**
-	 * @return
+	 * @return array[top] or 提示錯誤訊息
 	 */
 	public String pop() {
 		if (array.length <= 0 || array[top].equals("")) {
@@ -45,7 +45,7 @@ public class SaraStack {
 	}
 
 	/**
-	 * @return
+	 * @return array[top] or 提示錯誤訊息
 	 */
 	public String peek() {
 		if (array.length <= 0) {
@@ -56,10 +56,10 @@ public class SaraStack {
 	}
 
 	/**
-	 * @param tempArray
-	 * @param oldArray
-	 * @param arrayLength
-	 * @param value
+	 * @param tempArray 用新陣列長度做初始化的陣列，用以讓 array 以新長度重新初始化
+	 * @param oldArray 原陣列長度 {@link SaraStack#array}}
+	 * @param arrayLength 新陣列長度 = 原陣列長度 +1
+	 * @param value 使用者輸入的字串
 	 */
 	public void copyArrayData(String[] tempArray, String[] oldArray, int arrayLength, String value) {
 		// tempArray 複製 oldArray 的值
