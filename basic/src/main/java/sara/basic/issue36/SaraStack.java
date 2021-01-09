@@ -7,27 +7,40 @@ public class SaraStack {
 	public SaraStack() {
 		array = new String[0];
 	}
-	
+
 	/**
 	 * @param value
 	 */
 	public void push(String value) {
-		String[] newArr = new String[array.length + 1];
-		copyArrayData(newArr, array, array.length, value);
-		top = array.length - 1;
+		boolean noPlace = true;
+		for (int i = 0; i < array.length; i++) {
+			if (array[i].equals("")) {
+				array[i] = value;
+				top = i;
+				noPlace = false;
+				break;
+			}
+		}
+		if (noPlace) {
+			String[] newArr = new String[array.length + 1];
+			copyArrayData(newArr, array, array.length, value);
+			top = array.length - 1;
+		}
 	}
 
 	/**
 	 * @return
 	 */
 	public String pop() {
-		if (array.length <= 0) {
+		if (array.length <= 0 || array[top].equals("")) {
 			return "It's empty 此罐已空";
 		}
 		String last = array[top];
-		String[] newArr = new String[array.length - 1];
-		copyArrayData(newArr, array, newArr.length, "");
-		top = array.length - 1;
+		array[top] = "";
+		if (top == 0) {
+			return last;
+		}
+		top--;
 		return last;
 	}
 
