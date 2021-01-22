@@ -35,6 +35,7 @@ public class Main {
 			// 加入填入的規則
 			if ((i % size) == 1) {
 				y++;
+				countAndFill(x, y, finalSquare, size, i);
 				continue;
 			}
 			x++;
@@ -46,18 +47,16 @@ public class Main {
 				y += size;
 			}
 
-			if (x > 2) {
+			if (x > (size-1)) {
 				x = 0;
-			} else if (y > 2) {
+			} else if (y > (size-1)) {
 				y = 0;
 			}
 
-			// 開始填入
-			
-			
+			countAndFill(x, y, finalSquare, size, i);
+
 		}
 
-		System.out.println(Arrays.toString(finalSquare));
 		return finalSquare;
 	}
 
@@ -68,5 +67,11 @@ public class Main {
 			}
 			System.out.print(finalSquare[i] + "\t");
 		}
+	}
+
+	public static void countAndFill(int x, int y, int[] finalSquare, int size, int currentNumber) {
+		// 填入數字
+		int temp = x + (size * y);
+		finalSquare[temp] = currentNumber;
 	}
 }
