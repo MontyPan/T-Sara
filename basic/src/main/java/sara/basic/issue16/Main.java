@@ -1,6 +1,5 @@
 package sara.basic.issue16;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -8,6 +7,7 @@ public class Main {
 		int size = getSquareSize();
 		int[] squareShape = createSquareShape(size);
 
+		drawSquare(size, squareShape);
 	}
 
 	public static int getSquareSize() {
@@ -21,4 +21,12 @@ public class Main {
 		return squareShape;
 	}
 
+	public static void drawSquare(int size, int[] finalSquare) {
+		for (int i = 0; i < finalSquare.length; i++) {
+			if ((i % size) == 0) {
+				System.out.println();
+			}
+			System.out.print(finalSquare[i] + "\t");
+		}
+	}
 }
