@@ -40,18 +40,21 @@ public class Main {
 			x++;
 			y--;
 
-			if (x <= 0) {
+			if (x < 0) {
 				x += size;
-			} else if (y <= 0) {
+			} else if (y < 0) {
 				y += size;
 			}
 
-			if (x >= 3) {
-				x = 1;
-			} else if (y >= 3) {
-				y = 1;
+			if (x > 2) {
+				x = 0;
+			} else if (y > 2) {
+				y = 0;
 			}
 
+			// 開始填入
+			
+			
 		}
 
 		System.out.println(Arrays.toString(finalSquare));
