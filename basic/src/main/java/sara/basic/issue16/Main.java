@@ -1,6 +1,5 @@
 package sara.basic.issue16;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -12,17 +11,29 @@ public class Main {
 		drawSquare(size, finalSquare);
 	}
 
+	/**
+	 * @return 尺寸
+	 */
 	public static int getSquareSize() {
 		Scanner sc = new Scanner(System.in);
 		int typeInNum = sc.nextInt();
 		return typeInNum;
 	}
 
+	/**
+	 * @param size
+	 * @return 根據使用者輸入的尺寸形成的空方陣（只有預設值）
+	 */
 	public static int[] createSquareShape(int size) {
 		int[] squareShape = new int[size * size];
 		return squareShape;
 	}
 
+	/**
+	 * @param squareShape
+	 * @param size
+	 * @return 填完數字的方陣
+	 */
 	public static int[] fillInNumber(int[] squareShape, int size) {
 		int[] finalSquare = squareShape;
 		// 先把 1 填入 first row 的中間
@@ -30,36 +41,39 @@ public class Main {
 		// 宣告 x, y
 		int x = size / 2;
 		int y = 0;
+		int oldX;
+		int oldY;
+		int temp;
 		// 從 2 開始填入數字
 		for (int i = 2; i <= finalSquare.length; i++) {
 			// 加入填入的規則
-			if ((i % size) == 1) {
-				y++;
-				countAndFill(x, y, finalSquare, size, i);
-				continue;
-			}
+			oldX = x;
+			oldY = y;
 			x++;
 			y--;
-
-			if (x < 0) {
-				x += size;
-			} else if (y < 0) {
-				y += size;
+			x = checkXRule(x, size);
+			y = checkYRule(y, size);
+			temp = x + (size * y);
+			if (finalSquare[x + (size * y)] > 0) {
+				x = oldX;
+				y = oldY;
+				y++;
+				x = checkXRule(x, size);
+				y = checkYRule(y, size);
+				temp = x + (size * y);
+				finalSquare[temp] = i;
+				continue;
 			}
-
-			if (x > (size-1)) {
-				x = 0;
-			} else if (y > (size-1)) {
-				y = 0;
-			}
-
-			countAndFill(x, y, finalSquare, size, i);
-
+			finalSquare[temp] = i;
 		}
 
 		return finalSquare;
 	}
 
+	/**
+	 * @param size
+	 * @param finalSquare
+	 */
 	public static void drawSquare(int size, int[] finalSquare) {
 		for (int i = 0; i < finalSquare.length; i++) {
 			if ((i % size) == 0 && i > 0) {
@@ -69,9 +83,35 @@ public class Main {
 		}
 	}
 
-	public static void countAndFill(int x, int y, int[] finalSquare, int size, int currentNumber) {
-		// 填入數字
-		int temp = x + (size * y);
-		finalSquare[temp] = currentNumber;
+	/**
+	 * @param x
+	 * @param size
+	 * @return 調整超出方陣邊境的 x 的數值
+	 */
+	public static int checkXRule(int x, int size) {
+		if (x < 0) {
+			x += size;
+		}
+
+		if (x > (size - 1)) {
+			x = 0;
+		}
+		return x;
+	}
+
+	/**
+	 * @param y
+	 * @param size
+	 * @return 調整超出方陣邊境的 y 的數值
+	 */
+	public static int checkYRule(int y, int size) {
+		if (y < 0) {
+			y += size;
+		}
+
+		if (y > (size - 1)) {
+			y = 0;
+		}
+		return y;
 	}
 }
