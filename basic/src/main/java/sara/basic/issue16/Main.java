@@ -12,7 +12,9 @@ public class Main {
 	}
 
 	/**
-	 * @return 尺寸
+	 * 取得方陣的尺寸
+	 * 
+	 * @return 方陣的尺寸
 	 */
 	public static int getSquareSize() {
 		Scanner sc = new Scanner(System.in);
@@ -21,8 +23,10 @@ public class Main {
 	}
 
 	/**
-	 * @param size
-	 * @return 根據使用者輸入的尺寸形成的空方陣（只有預設值）
+	 * 用 getSquareSize() 取得的 size 建立只有預設值的空方陣
+	 * 
+	 * @param size 方陣的尺寸
+	 * @return size * size 的空方陣
 	 */
 	public static int[] createSquareShape(int size) {
 		int[] squareShape = new int[size * size];
@@ -30,8 +34,10 @@ public class Main {
 	}
 
 	/**
-	 * @param squareShape
-	 * @param size
+	 * 以座標邏輯將數字依序填入空方陣
+	 * 
+	 * @param squareShape createSquareShape() 得到的空方陣 
+	 * @param size 方陣的尺寸
 	 * @return 填完數字的方陣
 	 */
 	public static int[] fillInNumber(int[] squareShape, int size) {
@@ -71,8 +77,10 @@ public class Main {
 	}
 
 	/**
-	 * @param size
-	 * @param finalSquare
+	 * 印出填完數字的方陣
+	 * 
+	 * @param size 方陣的尺寸
+	 * @param finalSquare fillInNumber() 取得的填完數字的方陣
 	 */
 	public static void drawSquare(int size, int[] finalSquare) {
 		for (int i = 0; i < finalSquare.length; i++) {
@@ -84,9 +92,11 @@ public class Main {
 	}
 
 	/**
-	 * @param x
-	 * @param size
-	 * @return 調整超出方陣邊境的 x 的數值
+	 * 判斷與調整超出邊界的座標（x）
+	 * 
+	 * @param x 座標（x）
+	 * @param size 方陣的尺寸
+	 * @return 邊界內的 x 的數值
 	 */
 	public static int checkXRule(int x, int size) {
 		if (x < 0) {
@@ -100,9 +110,11 @@ public class Main {
 	}
 
 	/**
-	 * @param y
-	 * @param size
-	 * @return 調整超出方陣邊境的 y 的數值
+	 * 判斷與調整超出邊界的座標（y）
+	 * 
+	 * @param y 座標（y）
+	 * @param size 方陣的尺寸
+	 * @return 邊界內的 y 的數值
 	 */
 	public static int checkYRule(int y, int size) {
 		if (y < 0) {
